@@ -1,0 +1,24 @@
+%table.table
+  %thead
+    %tr
+      %th{:scope => "col"} UUID
+      %th{:scope => "col"} Amount
+      %th{:scope => "col"} Provider Name
+      %th{:scope => "col"} Provider RFC
+      %th{:scope => "col"} Emission Date
+      %th{:scope => "col"} Expiry Date
+  %tbody
+    - invoices.each do |invoice|
+      %tr
+        %td
+          = invoice.uuid
+        %td
+          = number_to_currency(invoice.amount, precision: 2, separator: '.', delimiter: ',', unit: invoice.currency, format: '%n %u')
+        %td
+          = invoice.emitter.name
+        %td
+          = invoice.emitter.rfc
+        %td
+          = invoice.emitted_at.strftime('%d/%m/%Y')
+        %td
+          = invoice.expires_at.strftime('%d/%m/%Y')

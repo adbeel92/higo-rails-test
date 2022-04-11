@@ -10,13 +10,35 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
-    %ul
-      %li= link_to 'Home', '/'
-      %li= link_to 'About', '/about'
+    #sidebar-wrapper.border-end.bg-white
+    #page-content-wrapper
+      %nav.navbar.navbar-expand-lg.navbar-light.bg-light.border-bottom
+        .container-fluid
+          .sidebar-heading Higo Rails Test
+          %ul.nav.justify-content-center
+            %li.nav-item
+              %a.nav-link.active{"aria-current" => "page", :href => "/"} Home
+            %li.nav-item
+              %a.nav-link{:href => "/invoices"} Invoices
+            %li.nav-item
+              %a.nav-link{:href => "/about"} About
+          #navbarSupportedContent.collapse.navbar-collapse
+            - if user_signed_in?
+              %ul.navbar-nav.ms-auto.mt-2.mt-lg-0
+                %li.nav-item
+                  %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+                    = current_user.email
+                  .dropdown-menu.dropdown-menu-end{"aria-labelledby" => "navbarDropdown"}
+                    = link_to 'Sign out', destroy_user_session_path, class: 'dropdown-item'
+            - else
+              %ul.navbar-nav.ms-auto.mt-2.mt-lg-0
+                %li.nav-item
+                  = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+      .container-fluid
+        #flash-display
+          - flash.each do |type, msg|
+            .alert{class: "alert-#{type == 'notice' ? "success" : type} alert-dismissible fade show", role: "alert"}
+              = msg if msg.is_a?(String)
+              %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", :type => "button"}
 
-      - if user_signed_in?
-        %li= link_to 'Sign out', destroy_user_session_path
-      - else
-        %li= link_to 'Sign in', new_user_session_path
-
-    = yield
+        = yield

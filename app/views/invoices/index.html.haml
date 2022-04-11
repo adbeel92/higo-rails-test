@@ -1,0 +1,8 @@
+%h1 Invoices
+
+.d-grid.gap-2.d-md-flex.justify-content-md-end
+  %button.btn.btn-primary{"data-bs-target" => "#exampleModal", "data-bs-toggle" => "modal", :type => "button"} Upload
+
+=render partial: 'upload_modal'
+
+=render partial: 'list', locals: { invoices: @invoices }

@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :invoice do
     uuid { SecureRandom.uuid }
+    user
     association :emitter, factory: :person
     association :receiver, factory: :person
     amount { '9.99' }
