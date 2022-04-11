@@ -8,11 +8,11 @@ RSpec.describe Person, type: :model do
 
   context 'when validations' do
     it 'is presence' do
-      expect(subject).to validate_presence_of(:uuid)
+      expect(subject).to validate_presence_of(:rfc)
       expect(subject).to validate_presence_of(:name)
     end
     it 'is unique' do
-      expect(subject).to validate_uniqueness_of(:uuid).case_insensitive
+      expect(subject).to validate_uniqueness_of(:rfc)
     end
   end
 end

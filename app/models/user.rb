@@ -7,6 +7,6 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     format: { with: Regexp::EMAIL },
                     uniqueness: {
-                      case_insensitive: true
+                      case_insensitive: false
                     }
 end

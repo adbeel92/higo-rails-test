@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 2022_04_11_024610) do
   end
 
   create_table "persons", force: :cascade do |t|
-    t.uuid "uuid", null: false
+    t.string "rfc", null: false
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["uuid"], name: "index_persons_on_uuid"
+    t.index ["rfc"], name: "index_persons_on_rfc"
   end
 
   create_table "users", force: :cascade do |t|

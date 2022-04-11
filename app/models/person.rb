@@ -8,6 +8,6 @@ class Person < ApplicationRecord
                                class_name: 'Invoice',
                                dependent: :destroy
 
-  validates :uuid, :name, presence: true
-  validates_uniqueness_of :uuid
+  validates :rfc, :name, presence: true
+  validates_uniqueness_of :rfc
 end
