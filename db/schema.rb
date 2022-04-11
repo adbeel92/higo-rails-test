@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_235310) do
+ActiveRecord::Schema.define(version: 2022_04_11_024610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,9 +43,32 @@ ActiveRecord::Schema.define(version: 2021_07_12_235310) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.uuid "uuid", null: false
+    t.bigint "emitter_id", null: false
+    t.bigint "receiver_id", null: false
+    t.decimal "amount", precision: 8, scale: 2, null: false
+    t.string "currency"
+    t.datetime "emitted_at"
+    t.datetime "expires_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["emitter_id"], name: "index_invoices_on_emitter_id"
+    t.index ["receiver_id"], name: "index_invoices_on_receiver_id"
+    t.index ["uuid"], name: "index_invoices_on_uuid"
+  end
+
+  create_table "persons", force: :cascade do |t|
+    t.uuid "uuid", null: false
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["uuid"], name: "index_persons_on_uuid"
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -57,4 +80,6 @@ ActiveRecord::Schema.define(version: 2021_07_12_235310) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "invoices", "persons", column: "emitter_id"
+  add_foreign_key "invoices", "persons", column: "receiver_id"
 end

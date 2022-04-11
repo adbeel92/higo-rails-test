@@ -50,11 +50,13 @@ group :development, :test do
 
   gem 'capybara'
 
+  gem 'database_cleaner-active_record'
   gem 'rubocop'
   gem 'rubocop-minitest'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 4.0'
   gem 'factory_bot_rails'
 end
 
