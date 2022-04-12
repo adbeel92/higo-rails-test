@@ -2,7 +2,9 @@ class InvoiceProcessorsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @invoice_processors = current_user.invoice_processors.includes(:invoice, file_attachment: :blob)
+    @invoice_processors = collection.result
+                                    .page(params[:page])
+                                    .per(params[:per_page])
   end
 
   def upload
@@ -16,6 +18,12 @@ class InvoiceProcessorsController < ApplicationController
   end
 
   private
+
+  def collection
+    current_user.invoice_processors
+                .includes(:invoice, file_attachment: :blob)
+                .ransack(ransack_params)
+  end
 
   def uploader_params
     params.require(:invoice_processor).permit(:file_type, files: [])

@@ -21,15 +21,19 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# AWS SDK S3 for Ruby.
+gem 'aws-sdk-s3', '~> 1.113.0', require: false
+# Simple, efficient background processing for Ruby
+gem 'sidekiq', '~> 6.4.1'
+# AASM - State machines for Ruby classes
+gem 'aasm', '~> 5.2.0'
+# Ransack will help you easily add searching to your Rails application, without any additional dependencies.
+gem 'ransack', '~> 3.0.1'
+# Pagination Ruby Gem
+gem 'kaminari', '~> 1.2.2'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
-gem 'aws-sdk-s3', require: false
-
-gem 'sidekiq'
-
-gem 'aasm'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

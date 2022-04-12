@@ -1,0 +1,10 @@
+.container
+  %form
+    .row.mb-3
+      %label.col-sm-2.col-form-label{:for => "basic-url"} Amount
+      .col-sm-10
+        .input-group.mb-3
+          %input.form-control{"aria-label" => "Min Amount", name: 'q[amount_gteq]', value: params[:q][:amount_gteq], placeholder: 'From', :type => "number", step: "0.01", min: "0.0"}/
+          %span.input-group-text -
+          %input.form-control{"aria-label" => "Max Amount", name: 'q[amount_lteq]', value: params[:q][:amount_lteq], placeholder: 'To', :type => "number", step: "0.01", min: "0.0" }/
+    %button.btn.btn-primary{:type => "submit"} Search

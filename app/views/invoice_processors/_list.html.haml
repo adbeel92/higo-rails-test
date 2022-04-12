@@ -23,3 +23,5 @@
         %td
           - if invoice_processor.invoice
             = link_to "Invoice #{invoice_processor.invoice.uuid}", invoices_path
+
+= paginate invoice_processors

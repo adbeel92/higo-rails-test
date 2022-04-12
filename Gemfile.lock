@@ -137,6 +137,18 @@ GEM
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jmespath (1.6.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -199,6 +211,10 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.6)
+    ransack (3.0.1)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -306,8 +322,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aasm
-  aws-sdk-s3
+  aasm (~> 5.2.0)
+  aws-sdk-s3 (~> 1.113.0)
   bootsnap (>= 1.4.4)
   byebug
   capybara
@@ -316,11 +332,13 @@ DEPENDENCIES
   factory_bot_rails
   haml-rails (~> 2.0)
   jbuilder (~> 2.7)
+  kaminari (~> 1.2.2)
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.6)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4)
+  ransack (~> 3.0.1)
   rspec-rails
   rubocop
   rubocop-minitest
@@ -328,7 +346,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   shoulda-matchers (~> 4.0)
-  sidekiq
+  sidekiq (~> 6.4.1)
   spring
   turbolinks (~> 5)
   tzinfo-data
