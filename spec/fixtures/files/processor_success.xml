@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <invoice-uuid>1ff1b46199e3973a07f2b1c147aac903ffb3</invoice-uuid>
+  <emitter>
+    <rfc>ee078a4e5b11c60d57dc3f5f280eaea078c7</rfc>
+    <name>Emitter ee078a4e</name>
+  </emitter>
+  <receiver>
+    <rfc>cf5fb2665fa522f511fcd64ab949a6bccbf5</rfc>
+    <name>Receiver cf5fb266</name>
+  </receiver>
+  <amount-cents type="integer">1966</amount-cents>
+  <amount-currency>USD</amount-currency>
+  <emitted-at type="date">2022-01-06</emitted-at>
+  <expires-at type="date">2022-02-05</expires-at>
+</hash>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :invoices
+  has_many :invoice_processors
 
   validates :email, presence: true,
                     format: { with: Regexp::EMAIL },

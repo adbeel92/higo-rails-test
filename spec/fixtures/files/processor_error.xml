@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jojojo>
+  <invoice-uuid>0c3cbc799d8206fff40a53adacefa3c7ec73</invoice-uuid>
+  <emitter>
+    <rfc>ab0a2b74d9aba71babdf34978debb3e01278</rfc>
+    <name>Emitter ab0a2b74</name>
+  </emitter>
+  <receiver>
+    <rfc>535de7dae1d80435fa6f29cc4b446589689c</rfc>
+    <name>Receiver 535de7da</name>
+  </receiver>
+  <amount-cents type="integer">469159</amount-cents>
+  <amount-currency>CAD</amount-currency>
+  <emitted-at type="date">2022-02-15</emitted-at>
+  <expires-at type="date">2022-03-17</expires-at>
+</jojojo>

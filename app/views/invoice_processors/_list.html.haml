@@ -1,0 +1,25 @@
+%table.table
+  %thead
+    %tr
+      %th{:scope => "col"} ID
+      %th{:scope => "col"} File
+      %th{:scope => "col"} File type
+      %th{:scope => "col"} Status
+      %th{:scope => "col"} Error
+      %th{:scope => "col"} Invoice
+  %tbody
+    - invoice_processors.each do |invoice_processor|
+      %tr
+        %td
+          = invoice_processor.id
+        %td
+          = link_to invoice_processor.file.filename, url_for(invoice_processor.file)
+        %td
+          = invoice_processor.file_type
+        %td
+          = invoice_processor.status
+        %td
+          = invoice_processor.error_message
+        %td
+          - if invoice_processor.invoice
+            = link_to "Invoice #{invoice_processor.invoice.uuid}", invoices_path

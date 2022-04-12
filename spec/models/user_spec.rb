@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { build(:user) }
 
-  # it { is_expected.to have_many(:uploaded_invoices) }
+  it { is_expected.to have_many(:invoices) }
+  it { is_expected.to have_many(:invoice_processors) }
 
   context 'when validations' do
     it 'is presence' do
