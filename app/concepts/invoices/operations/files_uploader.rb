@@ -20,7 +20,7 @@ module Invoices
           invoice_processor = InvoiceProcessor.create(
             user: @user, file: file, file_type: @file_type, status: :pending
           )
-          Invoices::FileUploaderJob.perform_later(invoice_processor.id)
+          Invoices::FileUploaderJob.set(wait: 5.seconds).perform_later(invoice_processor.id)
         end
       end
     end

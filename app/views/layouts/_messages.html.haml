@@ -1,0 +1,5 @@
+#flash-display
+  - flash.each do |type, msg|
+    .alert{class: "alert-#{type == 'notice' ? "success" : type} alert-dismissible fade show", role: "alert"}
+      = msg if msg.is_a?(String)
+      %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", :type => "button"}

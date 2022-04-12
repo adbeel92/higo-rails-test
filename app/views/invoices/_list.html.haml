@@ -9,7 +9,7 @@
       %th{:scope => "col"} Expiry Date
   %tbody
     - invoices.each do |invoice|
-      %tr
+      %tr{class: ("table-primary" if params[:id] == invoice.id.to_s)}
         %td
           = invoice.uuid
         %td

@@ -21,7 +21,7 @@ class InvoiceProcessor < ApplicationRecord
     state :running, :uploaded, :error
 
     event :run do
-      transitions from: [:pending, :error], to: :running
+      transitions from: [:pending, :error, :running], to: :running
     end
 
     event :complete do
@@ -29,7 +29,7 @@ class InvoiceProcessor < ApplicationRecord
     end
 
     event :to_retry do
-      transitions from: [:pending, :running, :uploaded], to: :error
+      transitions from: [:pending, :running, :uploaded, :error], to: :error
     end
   end
 end

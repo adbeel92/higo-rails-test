@@ -13,7 +13,7 @@ class InvoiceProcessorsController < ApplicationController
       files: uploader_params[:files],
       file_type: uploader_params[:file_type]
     )
-    flash[:notice] = 'Processing uploads'
+    flash[:notice] = 'Processing uploads...'
     redirect_to invoice_processors_path
   end
 
@@ -22,6 +22,7 @@ class InvoiceProcessorsController < ApplicationController
   def collection
     current_user.invoice_processors
                 .includes(:invoice, file_attachment: :blob)
+                .order(created_at: :desc)
                 .ransack(ransack_params)
   end
 

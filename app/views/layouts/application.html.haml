@@ -6,10 +6,12 @@
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
+    = action_cable_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   %body
+    =render partial: 'layouts/notifications'
     #sidebar-wrapper.border-end.bg-white
     #page-content-wrapper
       %nav.navbar.navbar-expand-lg.navbar-light.bg-light.border-bottom
@@ -37,10 +39,5 @@
                 %li.nav-item
                   = link_to 'Sign in', new_user_session_path, class: 'nav-link'
       .container-fluid
-        #flash-display
-          - flash.each do |type, msg|
-            .alert{class: "alert-#{type == 'notice' ? "success" : type} alert-dismissible fade show", role: "alert"}
-              = msg if msg.is_a?(String)
-              %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "alert", :type => "button"}
-
+        =render partial: 'layouts/messages'
         = yield

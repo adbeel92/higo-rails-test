@@ -15,11 +15,16 @@ module Invoices
 
       def upload
         read_file
-        store_invoice
-        @invoice_processor.complete!
+        if store_invoice
+          @invoice_processor.complete!
+        else
+          @invoice_processor.to_retry!
+        end
+        notify_invoice_processor
       rescue StandardError => e
         @invoice_processor.assign_attributes(error_message: e.message)
         @invoice_processor.to_retry!
+        notify_invoice_processor
       end
 
       private
@@ -61,6 +66,12 @@ module Invoices
         instance.assign_attributes(data)
         instance.save
         instance.id
+      end
+
+      def notify_invoice_processor
+        ActionCable.server.broadcast 'notifications_channel',
+          invoice_processor: @invoice_processor,
+          invoice_uuid: @invoice_processor.invoice.uuid
       end
     end
   end

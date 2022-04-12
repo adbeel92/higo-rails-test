@@ -16,12 +16,12 @@
           = link_to invoice_processor.file.filename, url_for(invoice_processor.file)
         %td
           = invoice_processor.file_type
-        %td
+        %td{id: "processor-table-status-#{invoice_processor.id}"}
           = invoice_processor.status
-        %td
+        %td{id: "processor-table-error-message-#{invoice_processor.id}"}
           = invoice_processor.error_message
-        %td
+        %td{id: "processor-table-invoice-uuid-#{invoice_processor.id}"}
           - if invoice_processor.invoice
-            = link_to "Invoice #{invoice_processor.invoice.uuid}", invoices_path
+            = link_to "Invoice #{invoice_processor.invoice.uuid}", invoices_path(id: invoice_processor.invoice_id)
 
 = paginate invoice_processors

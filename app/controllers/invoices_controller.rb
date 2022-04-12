@@ -12,6 +12,7 @@ class InvoicesController < ApplicationController
   def collection
     current_user.invoices
                 .includes(:emitter)
+                .order(created_at: :desc)
                 .ransack(ransack_params)
   end
 end
